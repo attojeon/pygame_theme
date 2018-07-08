@@ -17,6 +17,7 @@ fps = 60.0
 done = False
 points = []
 matrix = []
+def set_matrix(r, c):
 
 def game_data_init():
     rows = 10
