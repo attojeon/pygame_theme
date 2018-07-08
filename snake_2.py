@@ -17,11 +17,32 @@ fps = 60.0
 done = False
 points = []
 matrix = []
+head = [5,5]
+rows = 10
+cols = 10
+
+
 def set_matrix(r, c):
+    matrix[r, c] = 1
+
+
+# working....
+def move_head(r, c, direction):
+    cur_r = head[0]
+    cur_c = head[1]
+    if direction == UP:
+        pass
+    elif direction == DOWN:
+        pass
+    elif direction == LEFT:
+        pass
+    elif dirction == RIGHT:
+        pass
+    else:
+        print("move_head error")
+
 
 def game_data_init():
-    rows = 10
-    cols = 10
     onerow = []
     for i in range(0, rows):
         for j in range(0, cols):
@@ -29,12 +50,22 @@ def game_data_init():
         matrix.append(onerow)
         onerow = []
 
+    set_matrix(head[0], head[1])
+
+
+def display_matrix():
+    for r in matrix:
+        print(r)
+
+
 
 def process_key(key):
-    if( key == K_LEFT):
-        print(matrix)
-    if( key == K_RIGHT) :
-        print(matrix)
+    if( key == pg.K_LEFT):
+        display_matrix()
+    if( key == pg.K_RIGHT) :
+        display_matrix()
+
+
 
 def event_loop():
     global done    
