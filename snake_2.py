@@ -29,6 +29,12 @@ def game_data_init():
         onerow = []
 
 
+def process_key(key):
+    if( key == K_LEFT):
+        print(matrix)
+    if( key == K_RIGHT) :
+        print(matrix)
+
 def event_loop():
     global done    
     for event in pg.event.get():
@@ -42,13 +48,15 @@ def event_loop():
             points.append(pos)
             print("Mouse Clicked:{}, {}".format(pos[0], pos[1]))
         elif event.type == pg.KEYDOWN:
-            key = event.unicode  # 알파벳 등은 보여질 수 있으나 특수문자 키(스페이스, 엔터 등)은 볼 수 없음.
-            print('key pressed : {}'.format(key))
+            #key = event.unicode  # 알파벳 등은 보여질 수 있으나 특수문자 키(스페이스, 엔터 등)은 볼 수 없음.
+            #print('key pressed : {}'.format(key))
+            process_key(event.key)
+            
     
     
 
 def main_loop():
-    # 함수로 구현한 메인 루프
+    """The bare minimum for a functioning main loop."""
     while not done:
         event_loop()
         screen.fill(BACKGROUND_COLOR)
