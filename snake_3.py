@@ -125,6 +125,7 @@ Description:
             snake_coor를 참조하여 그래픽 작업을 진행한다.
 '''
 def object_draw_snake():
+    '''
     for b in snake_coor:
         color = GREEN
         x = b[1]
@@ -133,6 +134,11 @@ def object_draw_snake():
     y, x = snake_coor[0]
     color = RED
     pg.draw.rect(screen, color, (x*(cell_size+cell_margin), y*(cell_size+cell_margin), cell_size, cell_size  ))
+    '''
+    for idx, pos in enumerate(snake_coor):
+        color = RED if idx == 0 else GREEN
+        x = pos[1]; y=pos[0]
+        pg.draw.rect(screen, color, (x*(cell_size+cell_margin), y*(cell_size+cell_margin), cell_size, cell_size  ))
 
 
 
