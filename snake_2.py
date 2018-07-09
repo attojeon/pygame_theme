@@ -25,9 +25,13 @@ matrix = []
 snake_coor = []
 rows = 12
 cols = 12
-dir_c, dir_r = 0, 1  #수평방향:dir_c, 수직방향:dir_r
+dir_c, dir_r = 1, 0  #수평(Column)방향:dir_c, 수직(Row)방향:dir_r
 
 
+'''
+Description:Set direction, 
+            움직이는 방향 정하기
+'''
 def setDir(c,r):
     global dir_c, dir_r
     dir_c = c
@@ -37,7 +41,7 @@ def setDir(c,r):
 
 def board_init():
     global matrix
-    matrix = []
+    matrix = []     # matrix/onerow.append가 발생하기 전에 초기화 진행
     onerow = []
     for i in range(0, rows):
         for j in range(0, cols):
@@ -58,6 +62,10 @@ def display_matrix():
     print()
 
 
+'''
+Description:when snake eats apple one block of tail is added. 
+            뱀이 사과를 먹으면 꼬리 한 칸이 추가된다.
+'''
 def snake_eat_apple():
     global snake_coor
     a = snake_coor[-1][:]
@@ -65,10 +73,37 @@ def snake_eat_apple():
 
 
 '''
-아래와 같이 값이 대응된다. 
-r -> y
-c -> x 
-x,y좌표를 r,c와 매칭하여 연산해야 한다.
+Description:
+            (1)calc snake_coor[0](snake head) and dirction for list movement
+            (2)remove the last block of snake_coor
+            (1)snake_coor[0](뱀대가리)와 direction을 연산하여 snake 리스트를 이동을 연산한다.
+            (2)snake_coor의 마지막 위치를 삭제한다.
+'''
+def forward():
+    r,c  = snake_coor[0]
+    r += dir_r
+    c += dir_c
+    snake_coor.insert(0, (r,c))
+    snake_coor.pop(-1)
+
+
+'''
+Description:
+            build last matrix 2 dimmentional list using board and snake lists.
+            board와 snake를 조인하여 한 개의 최종 matrix를 연산한다.
+'''
+def object_update():
+    board_init()
+    for rc in snake_coor:
+        matrix[rc[0]][rc[1]] = 5
+
+
+'''
+Description:
+            아래와 같이 값이 대응된다. 
+            r -> key_up/down
+            c -> key_left/right
+            방향을 r,c와 매칭하여 연산해야 한다.
 '''
 def process_key(key):
     if( key == pg.K_LEFT):
@@ -109,18 +144,6 @@ def event_loop():
             process_key(event.key)
             
 
-def forward():
-    r,c  = snake_coor[0]
-    r += dir_r
-    c += dir_c
-    snake_coor.insert(0, (r,c))
-    snake_coor.pop(-1)
-
-
-def object_update():
-    board_init()
-    for rc in snake_coor:
-        matrix[rc[0]][rc[1]] = 5
     
 # 함수로 구현한 메인 루프
 def main_loop():
