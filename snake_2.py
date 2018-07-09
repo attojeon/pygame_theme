@@ -1,3 +1,8 @@
+##################################################
+# 사용법
+# - 방향키를 누르면 콘솔화면에 matrix가 업데이트 되어 보여진다.
+# - 스페이스 키를 누르면 뱀의 꼬리가 하나 길어진다.
+##################################################
 
 import os
 import sys
@@ -28,6 +33,8 @@ def setDir(c,r):
     dir_c = c
     dir_r = r
 
+
+
 def board_init():
     global matrix
     matrix = []
@@ -55,6 +62,7 @@ def snake_eat_apple():
     global snake_coor
     a = snake_coor[-1][:]
     snake_coor.append(a)
+
 
 '''
 아래와 같이 값이 대응된다. 
