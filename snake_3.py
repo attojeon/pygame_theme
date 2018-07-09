@@ -111,6 +111,33 @@ def object_update():
 
 '''
 Description:
+            matrix를 참조하여 그래픽 작업을 진행한다.
+'''
+def object_draw_board():
+    for r in range(rows):
+        for c in range(cols):
+            color = BLACK if matrix[r][c] == 9 else BLUE
+            pg.draw.rect(screen, color, ( c*(cell_size + cell_margin), r*(cell_size+cell_margin), cell_size, cell_size  ) ) 
+            
+
+'''
+Description:
+            snake_coor를 참조하여 그래픽 작업을 진행한다.
+'''
+def object_draw_snake():
+    for b in snake_coor:
+        color = GREEN
+        x = b[1]
+        y = b[0]
+        pg.draw.rect(screen, color, (x*(cell_size+cell_margin), y*(cell_size+cell_margin), cell_size, cell_size  ))
+    y, x = snake_coor[0]
+    color = RED
+    pg.draw.rect(screen, color, (x*(cell_size+cell_margin), y*(cell_size+cell_margin), cell_size, cell_size  ))
+
+
+
+'''
+Description:
             아래와 같이 값이 대응된다. 
             r -> key_up/down
             c -> key_left/right
@@ -153,25 +180,6 @@ def event_loop():
             key = event.unicode  # 알파벳 등은 보여질 수 있으나 특수문자 키(스페이스, 엔터 등)은 볼 수 없음.
             print('key pressed : {}'.format(key))
             process_key(event.key)
-
-
-def object_draw_board():
-    for r in range(rows):
-        for c in range(cols):
-            color = BLACK if matrix[r][c] == 9 else BLUE
-            pg.draw.rect(screen, color, ( c*(cell_size + cell_margin), r*(cell_size+cell_margin), cell_size, cell_size  ) ) 
-            
-
-def object_draw_snake():
-    for b in snake_coor:
-        color = GREEN
-        x = b[1]
-        y = b[0]
-        pg.draw.rect(screen, color, (x*(cell_size+cell_margin), y*(cell_size+cell_margin), cell_size, cell_size  ))
-    y, x = snake_coor[0]
-    color = RED
-    pg.draw.rect(screen, color, (x*(cell_size+cell_margin), y*(cell_size+cell_margin), cell_size, cell_size  ))
-
 
     
 # 함수로 구현한 메인 루프
