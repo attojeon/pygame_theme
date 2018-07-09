@@ -5,8 +5,7 @@ import pygame as pg
 
 SCREEN_SIZE = (500, 500)
 BACKGROUND_COLOR = (50, 50, 60)
-CAPTION = "Event Handler"
-
+CAPTION = "스네이크 게임 튜토리얼 레벨 1"
 
 pg.init()
 os.environ["SDL_VIDEO_CENTERED"] = "TRUE"
