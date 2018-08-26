@@ -1,12 +1,15 @@
-
+##################################################
+# 사용법
+# - 방향키를 누르면 콘솔화면에 눌려진 키의 코드를 출력한다.
+# - 루프이벤트를 함수로 처리하였음.
+##################################################
 import os
 import sys
 import pygame as pg
 
 SCREEN_SIZE = (500, 500)
 BACKGROUND_COLOR = (50, 50, 60)
-CAPTION = "Event Handler"
-
+CAPTION = "스네이크 게임 튜토리얼 레벨 1"
 
 pg.init()
 os.environ["SDL_VIDEO_CENTERED"] = "TRUE"
@@ -29,12 +32,6 @@ def game_data_init():
         onerow = []
 
 
-def process_key(key):
-    if( key == K_LEFT):
-        print(matrix)
-    if( key == K_RIGHT) :
-        print(matrix)
-
 def event_loop():
     global done    
     for event in pg.event.get():
@@ -48,15 +45,13 @@ def event_loop():
             points.append(pos)
             print("Mouse Clicked:{}, {}".format(pos[0], pos[1]))
         elif event.type == pg.KEYDOWN:
-            #key = event.unicode  # 알파벳 등은 보여질 수 있으나 특수문자 키(스페이스, 엔터 등)은 볼 수 없음.
-            #print('key pressed : {}'.format(key))
-            process_key(event.key)
-            
+            key = event.unicode  # 알파벳 등은 보여질 수 있으나 특수문자 키(스페이스, 엔터 등)은 볼 수 없음.
+            print('key pressed : {}'.format(key))
     
     
 
 def main_loop():
-    """The bare minimum for a functioning main loop."""
+    # 함수로 구현한 메인 루프
     while not done:
         event_loop()
         screen.fill(BACKGROUND_COLOR)
