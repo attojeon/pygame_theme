@@ -41,6 +41,7 @@ cell_size = 40
 cell_margin = 1
 game_font = pg.font.Font( pg.font.get_default_font(), 25)
 game_score = 0
+game_font_large = pg.font.Font( pg.font.get_default_font(), 72)
 
 
 '''
@@ -51,6 +52,17 @@ def score_to_screen(score_int, color, x, y):
     scoreRect = scoreSurf.get_rect()
     scoreRect.topleft = (x, y)
     screen.blit(scoreSurf, scoreRect)
+
+
+'''
+    문자열을 화면의 중앙에 크게 표시하기
+'''
+def drawBigMsg_to_screen(msg, color):
+    msgSurf = game_font.render(msg, True, color)
+    msgRect = msgSurf.get_rect()
+    msgRect.center = ( SCREEN_SIZE[0]/2, SCREEN_SIZE[1]/2)
+    screen.blit(msgSurf, msgRect)
+
 
 
 '''
@@ -206,6 +218,7 @@ def event_loop():
 def main_loop():
     global game_score
     count = 0
+
     while not done:
         event_loop()
         if count % game_speed == 0:
@@ -217,6 +230,7 @@ def main_loop():
         object_draw_board()
         object_draw_snake()
         score_to_screen(game_score, BLUE, 10, 10)
+        drawBigMsg_to_screen('SNAKE GAME', (255, 0, 0) )
         pg.display.update()
         count += 1
         clock.tick(fps)
