@@ -1,3 +1,7 @@
+"""
+점점 커지는 원의 색상이 랜덤하게 변하는 기능을 추가함.
+ - class에 color 변수를 추가하고, pygame.color에서 랜덤하게 세팅되게 하였음.
+"""
 import pygame
 from pygame.locals import *
 from pygame import Color, Rect
