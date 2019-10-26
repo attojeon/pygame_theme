@@ -4,6 +4,9 @@
 # 참고 사이트 
 # https://pygame.org
 # https://pygame.org/docs/
+#
+# 다운로드 사이트
+# http://learnsteam.co.kr/dn/animals.zip
 ##################################################
 
 import pygame as pg
