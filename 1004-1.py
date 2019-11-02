@@ -7,6 +7,12 @@
 #
 # 다운로드 사이트
 # http://learnsteam.co.kr/dn/animals.zip
+#
+# 다운로드 받은 후
+#  - 자기의 소스(`.py`)가 있는 디렉토리에서 'img'를 만들고 그 폴더 안에 이미지 파일들이 있어야 합니다.
+#  - mysrc.py 
+#  -      + -- img(폴더)
+#  -            +-- player.png 
 ##################################################
 
 import pygame as pg
