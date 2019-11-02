@@ -1,5 +1,5 @@
 ##################################################
-# pygame - 화면에 작아지는 사각형 그리기
+# pygame - 화면에 커지고 작아지는 사각형 그리기
 #
 # 참고 사이트 
 # https://pygame.org
@@ -23,6 +23,8 @@ pygame.display.set_caption("pygame 이해하기")
 running = True
 w = int(width/2)
 h = int(height/2)
+dx = 5
+dy = 5
 
 while running:
     for event in pygame.event.get():
@@ -38,8 +40,12 @@ while running:
 
     pygame.display.update()
     
-    w +=1
-    h +=1
+    w +=dx
+    if w > width or w < 0:
+        dx = dx * (-1)
+    h +=dy
+    if h > height or h < 0:
+        dy = dy * (-1)
     time.sleep(0.1)
 
 print('메인루프 종료')
