@@ -1,5 +1,5 @@
 ##################################################
-# pygame - 사인함수 사용해 보기 
+# pygame - 삼각함수 사용하여 회전하는 시계바늘을 구현해 봄
 #
 # 참고 사이트 
 # https://pygame.org
@@ -15,33 +15,35 @@ import math
 # 반드시 주어진 함수이름과 순서를 지켜야 함.
 
 pygame.init()
-screen = pygame.display.set_mode((400, 300))
+width = 400
+height = 400
+center_w = int(width/2)
+center_h = int(height/2)
+screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("pygame 이해하기")
 
-x1 = 0
-y1 = 0
 startx = 0
 running = True
+tick = 0
+scale = 150.0
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
     
+    x1 = center_w + scale * math.cos(math.radians(tick))
+    y1 = center_h + scale * math.sin(math.radians(tick))
+
     screen.fill((0, 0, 0))
 
-    x1 = math.sin(startx)*20 + startx
-    y1 = math.cos(startx)*20 + 100
-
-    pygame.draw.line(screen, (0, 0, 255), (60, 60), (120, 60), 4)
-    pygame.draw.line(screen, (255, 0, 0), (10, 10), (60, 60), 10)
-    pygame.draw.rect(screen, (0, 255, 0), (x1, y1, 20, 20), 2)
+    print('x1:{}, y1:{}'.format(x1, y1))
+    pygame.draw.line(screen, (255, 255, 0), (center_w, center_h), (x1, y1), 6)
 
     pygame.display.update()
-    
-    x1 +=1
-    y1 +=1
-    startx +=1
-    time.sleep(0.1)
+
+    tick += 1
+    time.sleep(0.05)
+
 
 print('메인루프 종료')
 pygame.quit()

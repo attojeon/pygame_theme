@@ -34,7 +34,8 @@ while running:
     # 위 2번에서 리턴받은 screen을 사용합니다. 
     #   screen, color, 시작좌표, 종료좌표, 굵기 
     #   참고 사이트 : pygame.org/docs
-    pygame.draw.line(screen, (0, 0, 255), (60, 60), (120, 60), 4)
+    pygame.draw.line(screen, (0, 0, 255), (0, 60), (200, 60), 4)
+    pygame.draw.line(screen, (255, 0, 0), (0, 0), (200, 300), 4)
 
     pygame.display.update()
     

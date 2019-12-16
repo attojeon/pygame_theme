@@ -53,3 +53,4 @@ while running:
 
 print('메인루프 종료')
 pg.quit()
+
